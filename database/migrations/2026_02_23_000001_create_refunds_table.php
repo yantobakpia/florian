@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('refunds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
             $table->decimal('amount', 12, 2)->default(0);
             $table->string('method')->nullable();
             $table->string('reference_number')->nullable();
             $table->text('notes')->nullable();
             $table->timestamp('refund_date')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->string('type')->default('refund');
             $table->timestamps();
             $table->softDeletes();

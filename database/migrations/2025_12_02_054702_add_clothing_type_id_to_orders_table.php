@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             // Cek apakah kolom clothing_type_id sudah ada
             if (!Schema::hasColumn('orders', 'clothing_type_id')) {
-                $table->foreignId('clothing_type_id')->nullable()->constrained('clothing_types')->nullOnDelete();
+                $table->unsignedBigInteger('clothing_type_id')->nullable();
             }
             
             // Cek apakah kolom custom_clothing_type sudah ada
@@ -33,7 +33,6 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             // Kembalikan ke state sebelumnya
             if (Schema::hasColumn('orders', 'clothing_type_id')) {
-                $table->dropForeign(['clothing_type_id']);
                 $table->dropColumn('clothing_type_id');
             }
             
@@ -43,7 +42,7 @@ return new class extends Migration
             
             // Kembalikan material_id jika di-down
             if (!Schema::hasColumn('orders', 'material_id')) {
-                $table->foreignId('material_id')->nullable()->constrained()->nullOnDelete();
+                $table->unsignedBigInteger('material_id')->nullable();
             }
         });
     }

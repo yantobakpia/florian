@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('due_date');
             $table->dateTime('paid_date')->nullable();
             $table->text('notes')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
             
@@ -35,14 +35,14 @@ return new class extends Migration
         
         Schema::create('loan_installments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('loan_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('loan_id');
             $table->integer('installment_number');
             $table->integer('amount');
             $table->string('payment_method')->default('cash');
             $table->dateTime('payment_date');
             $table->text('notes')->nullable();
-            $table->foreignId('balance_transaction_id')->nullable()->constrained('balance_transactions');
-            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->unsignedBigInteger('balance_transaction_id')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
             

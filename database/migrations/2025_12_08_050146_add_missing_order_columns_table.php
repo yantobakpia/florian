@@ -74,7 +74,7 @@ return new class extends Migration
                             $table->text($columnName)->nullable()->after($config['after']);
                             break;
                         case 'foreignId':
-                            $table->foreignId($columnName)->nullable()->constrained('users')->after($config['after']);
+                            $table->unsignedBigInteger($columnName)->nullable()->after($config['after']);
                             break;
                         default:
                             $table->string($columnName)->nullable()->after($config['after']);

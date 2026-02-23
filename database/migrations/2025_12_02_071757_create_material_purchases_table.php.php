@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('material_purchases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('material_id')->constrained('materials')->onDelete('cascade');
+            $table->unsignedBigInteger('material_id');
             $table->string('supplier');
             $table->string('invoice_number')->nullable();
             $table->decimal('quantity', 10, 2);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->date('purchase_date');
             $table->date('received_date')->nullable();
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
             

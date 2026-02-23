@@ -11,14 +11,14 @@ return new class extends Migration
     {
         Schema::create('order_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
             $table->enum('type', ['dp', 'full', 'partial', 'refund'])->default('dp');
             $table->decimal('amount', 12, 2);
             $table->enum('method', ['cash', 'transfer', 'qris', 'other'])->default('cash');
             $table->string('reference_number')->nullable();
             $table->text('notes')->nullable();
             $table->date('payment_date');
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
             

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('payment_method', ['cash', 'transfer', 'qris', 'other'])->default('cash');
             $table->text('notes')->nullable();
             $table->dateTime('transaction_date')->useCurrent();
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('created_by');
             $table->softDeletes();
             $table->timestamps();
             

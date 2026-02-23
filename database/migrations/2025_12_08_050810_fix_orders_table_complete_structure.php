@@ -111,7 +111,7 @@ return new class extends Migration
             
             // Kolom tailor_id
             if (!in_array('tailor_id', $existingColumns)) {
-                $table->foreignId('tailor_id')->nullable()->constrained('users')->after('completion_date');
+                $table->unsignedBigInteger('tailor_id')->nullable()->after('completion_date');
             }
             
             // Kolom notes

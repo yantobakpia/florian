@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('additional_charges', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
             $table->string('type'); // embroidery, patch, etc
             $table->string('description')->nullable();
             $table->integer('quantity')->default(1);

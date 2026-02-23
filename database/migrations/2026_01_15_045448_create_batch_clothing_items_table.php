@@ -11,8 +11,8 @@ return new class extends Migration
     {
         Schema::create('batch_clothing_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->foreignId('clothing_type_id')->nullable()->constrained()->nullOnDelete();
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('clothing_type_id')->nullable();
             $table->string('custom_name')->nullable()->comment('Nama custom jika tidak ada clothing_type');
             $table->decimal('base_price', 12, 2)->default(0);
             $table->string('color')->nullable();

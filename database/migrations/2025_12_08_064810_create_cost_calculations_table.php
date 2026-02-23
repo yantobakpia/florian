@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('cost_calculations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
             
             // BAHAN (KELUAR)
             $table->decimal('fabric_cost', 15, 2)->default(0);

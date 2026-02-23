@@ -42,7 +42,7 @@ return new class extends Migration
                 $table->string('payment_method')->default('cash');
                 $table->text('notes')->nullable();
                 $table->dateTime('transaction_date');
-                $table->foreignId('created_by')->nullable()->constrained('users');
+                $table->unsignedBigInteger('created_by')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });
@@ -83,7 +83,7 @@ return new class extends Migration
                 $table->string('payment_method')->default('cash');
                 $table->text('notes')->nullable();
                 $table->dateTime('transaction_date');
-                $table->foreignId('created_by')->nullable()->constrained('users');
+                $table->unsignedBigInteger('created_by')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });

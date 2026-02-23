@@ -20,7 +20,7 @@ return new class extends Migration
             Schema::table('orders', function (Blueprint $table) {
                 // Tambahkan kolom clothing_type_id jika belum ada
                 if (!Schema::hasColumn('orders', 'clothing_type_id')) {
-                    $table->foreignId('clothing_type_id')->nullable()->constrained('clothing_types')->nullOnDelete();
+                    $table->unsignedBigInteger('clothing_type_id')->nullable();
                 }
                 
                 // Tambahkan kolom custom_clothing_type jika belum ada
@@ -55,10 +55,10 @@ return new class extends Migration
         
         // Basic information
         $table->string('order_number')->unique();
-        $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
+        $table->unsignedBigInteger('customer_id');
         
         // Product information
-        $table->foreignId('clothing_type_id')->nullable()->constrained('clothing_types')->nullOnDelete();
+        $table->unsignedBigInteger('clothing_type_id')->nullable();
         $table->string('custom_clothing_type')->nullable();
         $table->string('size');
         $table->decimal('size_surcharge', 10, 2)->default(0);
@@ -98,7 +98,7 @@ return new class extends Migration
         $table->date('completion_date')->nullable();
         
         // Production
-        $table->foreignId('tailor_id')->nullable()->constrained('users')->nullOnDelete();
+        $table->unsignedBigInteger('tailor_id')->nullable();
         
         // Notes
         $table->text('measurement_notes')->nullable();
@@ -186,7 +186,7 @@ return new class extends Migration
 
         // Tambahkan tailor_id sebagai foreign key
         if (!Schema::hasColumn('orders', 'tailor_id')) {
-            $table->foreignId('tailor_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('tailor_id')->nullable();
         }
     }
 

@@ -14,12 +14,7 @@ return new class extends Migration
             if (Schema::hasTable('clothing_types')) {
                 // Tambahkan kolom clothing_type_id jika belum ada
                 if (!Schema::hasColumn('orders', 'clothing_type_id')) {
-                    $table->foreignId('clothing_type_id')->nullable()->constrained('clothing_types')->nullOnDelete();
-                }
-            } else {
-                // Jika tabel clothing_types belum ada, buat dulu kolom tanpa foreign key
-                if (!Schema::hasColumn('orders', 'clothing_type_id')) {
-                    $table->foreignId('clothing_type_id')->nullable();
+                    $table->unsignedBigInteger('clothing_type_id')->nullable();
                 }
             }
             
@@ -35,17 +30,6 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             // Hanya hapus jika kolom tersebut ada
             if (Schema::hasColumn('orders', 'clothing_type_id')) {
-                // Cek dulu apakah ada foreign key constraint
-                $connection = Schema::getConnection();
-                $foreignKeys = $connection->getDoctrineSchemaManager()->listTableForeignKeys($table->getTable());
-                
-                foreach ($foreignKeys as $foreignKey) {
-                    if (in_array('clothing_type_id', $foreignKey->getLocalColumns())) {
-                        $table->dropForeign(['clothing_type_id']);
-                        break;
-                    }
-                }
-                
                 $table->dropColumn('clothing_type_id');
             }
             

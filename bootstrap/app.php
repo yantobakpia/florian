@@ -40,8 +40,6 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-// Tambahkan sebelum 'return $app;'
-$app->register(\App\Providers\Filament\AdminPanelProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Return The Application

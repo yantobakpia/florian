@@ -14,7 +14,7 @@ use Carbon\Carbon;
 
 class CashFlowSummary extends BaseWidget
 {
-    protected static ?string $heading = 'Ringkasan Cash Flow Lengkap';
+    protected ?string $heading = 'Ringkasan Cash Flow Lengkap';
     
     protected static ?int $sort = 1;
     

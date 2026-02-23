@@ -1,0 +1,122 @@
+/* resources/css/filament.css */
+
+/* Responsive Filament Table */
+.filament-tables-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem -1rem;
+    padding: 0 1rem;
+}
+
+.filament-tables-table {
+    min-width: 700px !important;
+    width: 100% !important;
+}
+
+.filament-tables-cell {
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
+    white-space: nowrap;
+}
+
+.filament-tables-header-cell {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+}
+
+/* Compact table */
+.filament-tables-table td,
+.filament-tables-table th {
+    vertical-align: middle !important;
+}
+
+/* Action button styling */
+.filament-tables-actions {
+    white-space: nowrap;
+    width: 120px !important;
+}
+
+.filament-tables-actions button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.75rem !important;
+}
+
+/* Badge size */
+.filament-badge {
+    padding: 0.125rem 0.375rem !important;
+    font-size: 0.75rem !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .filament-tables-container {
+        margin: 0.5rem -0.5rem !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .filament-tables-table {
+        font-size: 0.75rem !important;
+        min-width: 600px !important;
+    }
+    
+    .filament-tables-cell {
+        padding: 0.25rem 0.375rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .filament-tables-header-cell {
+        padding: 0.5rem 0.375rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Hide action labels on mobile, show only icons */
+    .filament-tables-actions .filament-dropdown-list-item span:not(.filament-icon) {
+        display: none !important;
+    }
+    
+    .filament-tables-actions button {
+        padding: 0.125rem 0.25rem !important;
+    }
+}
+
+/* Hide less important columns on smaller screens */
+@media (max-width: 1024px) {
+    .filament-tables-table [data-column-name="clothing_type_display"],
+    .filament-tables-table [data-column-name="quantity"] {
+        display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .filament-tables-table [data-column-name="size"],
+    .filament-tables-table [data-column-name="due_date"] {
+        display: none !important;
+    }
+}
+
+/* Custom scrollbar */
+.filament-tables-container::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.filament-tables-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.filament-tables-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.filament-tables-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Make numbers monospace for better alignment */
+.filament-tables-cell:contains("Rp"),
+.filament-tables-cell:contains("pcs") {
+    font-family: 'Courier New', monospace !important;
+}
